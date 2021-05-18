@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BD1" Class="ProyectoDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=BLUE\SQLEXPRESS;Initial Catalog=BD1;Integrated Security=True" SettingsObjectName="WinApp.Properties.Settings" SettingsPropertyName="BD1ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Bodegas" Member="Bodegas">
+    <Type Name="Bodegas">
+      <Column Name="ID_Bodega" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Dimenciones" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Estado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Edificio" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Association Name="EdificioTB_Bodegas" Member="EdificioTB" ThisKey="ID_Edificio" OtherKey="ID_Edificio" Type="EdificioTB" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Capillas" Member="Capillas">
+    <Type Name="Capillas">
+      <Column Name="ID_Capilla" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Cap_Personas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Dimenciones" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Edificio" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Association Name="EdificioTB_Capillas" Member="EdificioTB" ThisKey="ID_Edificio" OtherKey="ID_Edificio" Type="EdificioTB" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EdificioTB" Member="EdificioTB">
+    <Type Name="EdificioTB">
+      <Column Name="ID_Edificio" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nombre_edificio" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Encargado" Type="System.String" DbType="Char(25) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[E-Mail]" Member="E_Mail" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Dirección" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="EdificioTB_Bodegas" Member="Bodegas" ThisKey="ID_Edificio" OtherKey="ID_Edificio" Type="Bodegas" />
+      <Association Name="EdificioTB_Capillas" Member="Capillas" ThisKey="ID_Edificio" OtherKey="ID_Edificio" Type="Capillas" />
+      <Association Name="EdificioTB_EspacioTB" Member="EspacioTB" ThisKey="ID_Edificio" OtherKey="ID_Edificio" Type="EspacioTB" />
+      <Association Name="EdificioTB_Parqueos" Member="Parqueos" ThisKey="ID_Edificio" OtherKey="ID_Edificio" Type="Parqueos" />
+      <Association Name="EdificioTB_Usuario" Member="Usuario" ThisKey="ID_Edificio" OtherKey="ID_Edificio" Type="Usuario" />
+      <Association Name="EdificioTB_TBusers" Member="TBusers" ThisKey="ID_Edificio" OtherKey="ID_Edificio" Type="TBusers" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Enseres" Member="Enseres">
+    <Type Name="Enseres">
+      <Column Name="ID_Enser" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Marca" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Tipo" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Espacio" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Association Name="EspacioTB_Enseres" Member="EspacioTB" ThisKey="ID_Espacio" OtherKey="ID_Espacio" Type="EspacioTB" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EspacioTB" Member="EspacioTB">
+    <Type Name="EspacioTB">
+      <Column Name="ID_Espacio" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Tipo" Type="System.String" DbType="Char(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Capacidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Dimensiones" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Edificio" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Association Name="EspacioTB_Enseres" Member="Enseres" ThisKey="ID_Espacio" OtherKey="ID_Espacio" Type="Enseres" />
+      <Association Name="EspacioTB_Insidencias" Member="Insidencias" ThisKey="ID_Espacio" OtherKey="ID_Espacio" Type="Insidencias" />
+      <Association Name="EdificioTB_EspacioTB" Member="EdificioTB" ThisKey="ID_Edificio" OtherKey="ID_Edificio" Type="EdificioTB" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Insidencias" Member="Insidencias">
+    <Type Name="Insidencias">
+      <Column Name="ID_Insidencia" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Descripción" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Situación" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Espacio" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Association Name="EspacioTB_Insidencias" Member="EspacioTB" ThisKey="ID_Espacio" OtherKey="ID_Espacio" Type="EspacioTB" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Parqueos" Member="Parqueos">
+    <Type Name="Parqueos">
+      <Column Name="ID_Parqueo" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Cap_Vehiculos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Dimenciones" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Edificio" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Association Name="EdificioTB_Parqueos" Member="EdificioTB" ThisKey="ID_Edificio" OtherKey="ID_Edificio" Type="EdificioTB" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Roles" Member="Roles">
+    <Type Name="Roles">
+      <Column Name="ID_Rol" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nombre_Rol" Type="System.String" DbType="Char(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Descrip_Rol" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Estado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Salario" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Association Name="Roles_Usuario" Member="Usuario" ThisKey="ID_Rol" OtherKey="ID_Rol" Type="Usuario" />
+      <Association Name="Roles_TBusers" Member="TBusers" ThisKey="ID_Rol" OtherKey="ID_Rol" Type="TBusers" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Usuario" Member="Usuario">
+    <Type Name="Usuario">
+      <Column Name="ID_Usuario" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="Char(25) NOT NULL" CanBeNull="false" />
+      <Column Name="Usuario" Member="Usuario1" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Contraseña" Type="System.Data.Linq.Binary" DbType="VarBinary(20) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Direccion" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Telefono" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[E-Mail]" Member="E_Mail" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Edificio" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ID_Rol" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="EdificioTB_Usuario" Member="EdificioTB" ThisKey="ID_Edificio" OtherKey="ID_Edificio" Type="EdificioTB" IsForeignKey="true" />
+      <Association Name="Roles_Usuario" Member="Roles" ThisKey="ID_Rol" OtherKey="ID_Rol" Type="Roles" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBusers" Member="TBusers">
+    <Type Name="TBusers">
+      <Column Name="ID_User" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="Char(25) NOT NULL" CanBeNull="false" />
+      <Column Name="Usuario" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Pass" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Dire" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Telefono" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[E-maul]" Member="E_maul" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Edificio" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Rol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="EdificioTB_TBusers" Member="EdificioTB" ThisKey="ID_Edificio" OtherKey="ID_Edificio" Type="EdificioTB" IsForeignKey="true" />
+      <Association Name="Roles_TBusers" Member="Roles" ThisKey="ID_Rol" OtherKey="ID_Rol" Type="Roles" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.Actualizar_Enser" Method="Actualizar_Enser">
+    <Parameter Name="id" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="Marca" Parameter="marca" Type="System.String" DbType="NVarChar(15)" />
+    <Parameter Name="Tipo" Parameter="tipo" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="DEstado" Parameter="dEstado" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Espacio" Parameter="espacio" Type="System.String" DbType="NVarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Actualizar_espacio" Method="Actualizar_espacio">
+    <Parameter Name="id" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="Tipo" Parameter="tipo" Type="System.String" DbType="Char(15)" />
+    <Parameter Name="Capacidad" Parameter="capacidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Dimenciones" Parameter="dimenciones" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="estado" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Edicifio" Parameter="edicifio" Type="System.String" DbType="NVarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Eliminar_Enser" Method="Eliminar_Enser">
+    <Parameter Name="id" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="DEstado" Parameter="dEstado" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Eliminar_espacio" Method="Eliminar_espacio">
+    <Parameter Name="id" Type="System.String" DbType="NVarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Insertar_Enser" Method="Insertar_Enser">
+    <Parameter Name="id" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="Marca" Parameter="marca" Type="System.String" DbType="NVarChar(15)" />
+    <Parameter Name="Tipo" Parameter="tipo" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="Espacio" Parameter="espacio" Type="System.String" DbType="NVarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Insertar_Espacio" Method="Insertar_Espacio">
+    <Parameter Name="id" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="Tipo" Parameter="tipo" Type="System.String" DbType="Char(15)" />
+    <Parameter Name="Capacidad" Parameter="capacidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Dimenciones" Parameter="dimenciones" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="estado" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Edicifio" Parameter="edicifio" Type="System.String" DbType="NVarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ListarEdificios" Method="ListarEdificios">
+    <ElementType Name="ListarEdificiosResult">
+      <Column Name="ID_Edificio" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre_edificio" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Encargado" Type="System.String" DbType="Char(25) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[E-Mail]" Member="E_Mail" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Dirección" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ListarEnseres" Method="ListarEnseres">
+    <ElementType Name="ListarEnseresResult">
+      <Column Name="ID_Enser" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Marca" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Tipo" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Espacio" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ListarEspacios" Method="ListarEspacios">
+    <ElementType Name="ListarEspaciosResult">
+      <Column Name="ID_Espacio" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Tipo" Type="System.String" DbType="Char(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Capacidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Dimensiones" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Edificio" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Eliminar_User" Method="Eliminar_User">
+    <Parameter Name="id" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="estado" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Actualizar_User" Method="Actualizar_User">
+    <Parameter Name="id" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="name" Type="System.String" DbType="Char(25)" />
+    <Parameter Name="user" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="pass" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Dire" Parameter="dire" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Tele" Parameter="tele" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="estado" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Edificio" Parameter="edificio" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="Rol" Parameter="rol" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Actualizar_Rol" Method="Actualizar_Rol">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="Char(15)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="Text" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Salario" Parameter="salario" Type="System.Decimal" DbType="Money" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Eliminar_Rol" Method="Eliminar_Rol">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Insertar_Rol" Method="Insertar_Rol">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="Char(15)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="Text" />
+    <Parameter Name="Salario" Parameter="salario" Type="System.Decimal" DbType="Money" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ListarUser" Method="ListarUser">
+    <ElementType Name="ListarUserResult">
+      <Column Name="ID_User" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="Char(25) NOT NULL" CanBeNull="false" />
+      <Column Name="Usuario" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Pass" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Dire" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Telefono" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[E-maul]" Member="E_maul" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Edificio" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Rol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Insertar_User" Method="Insertar_User">
+    <Parameter Name="id" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="name" Type="System.String" DbType="Char(25)" />
+    <Parameter Name="user" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="pass" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Dire" Parameter="dire" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Tele" Parameter="tele" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="estado" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Edificio" Parameter="edificio" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="Rol" Parameter="rol" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
