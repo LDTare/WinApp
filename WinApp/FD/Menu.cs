@@ -41,15 +41,29 @@ namespace WinApp.FD
             comboBox1.ValueMember = "ID_Rol";
             comboBox1.DisplayMember = "Nombre_Rol";
 
-            string rol;
+            var rol = comboBox1.SelectedValue;
 
-            switch(rol)
+            switch(Convert.ToInt32(rol))
             {
-                case "Administrador":
+                case 1:
                     {
+                        button1.Enabled = true;
+                        button2.Enabled = true;
+                        button3.Enabled = true;
+                        button4.Enabled = true;
+                        button5.Enabled = true;
+                        button6.Enabled = true;
+                        button7.Enabled = true;
 
                         break;
                     }
+
+                case 2:
+                    {
+                        button7.Enabled = true;
+                        break;
+                    }
+
                 default:
                     {
                         break;
@@ -70,6 +84,13 @@ namespace WinApp.FD
             Form1 inicio = new Form1();
             inicio.Show();
             this.Close();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            FD.Invitado ins = new Invitado();
+
+            ins.Show();
         }
     }
 }

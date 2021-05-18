@@ -64,6 +64,12 @@
     <Compile Include="FD\Enseres.Designer.cs">
       <DependentUpon>Enseres.cs</DependentUpon>
     </Compile>
+    <Compile Include="FD\Invitado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FD\Invitado.Designer.cs">
+      <DependentUpon>Invitado.cs</DependentUpon>
+    </Compile>
     <Compile Include="FD\LDT.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FD\Enseres.resx">
       <DependentUpon>Enseres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FD\Invitado.resx">
+      <DependentUpon>Invitado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FD\LDT.resx">
       <DependentUpon>LDT.cs</DependentUpon>

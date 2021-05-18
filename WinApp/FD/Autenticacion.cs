@@ -30,7 +30,7 @@ namespace WinApp.FD
 
                 LogIn._usuario = textBox1.Text;
 
-                LogIn.ShowDialog();
+                LogIn.Show();
                 this.Close();
             }
             else

@@ -34,7 +34,7 @@ namespace WinApp
             MessageBox.Show("Se creara un usuario temporal hasta que un administrador le asigne un rol","Información",MessageBoxButtons.OK);
             FD.NuevoUser AddTemp = new NuevoUser();
             this.Hide();
-            AddTemp.Show();
+            AddTemp.ShowDialog();
         }
 
         private void button3_Click(object sender, EventArgs e)

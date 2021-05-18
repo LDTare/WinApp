@@ -39,8 +39,8 @@ namespace WinApp.FD
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -56,10 +56,11 @@ namespace WinApp.FD
             // 
             // button1
             // 
+            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(4, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(95, 35);
-            this.button1.TabIndex = 6;
+            this.button1.TabIndex = 1;
             this.button1.Text = "Usuarios";
             this.button1.UseVisualStyleBackColor = true;
             // 
@@ -84,74 +85,72 @@ namespace WinApp.FD
             this.button8.Location = new System.Drawing.Point(4, 290);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(95, 35);
-            this.button8.TabIndex = 14;
+            this.button8.TabIndex = 8;
             this.button8.Text = "Salir";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button7
             // 
+            this.button7.Enabled = false;
             this.button7.Location = new System.Drawing.Point(4, 249);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(95, 35);
-            this.button7.TabIndex = 13;
-            this.button7.Text = "button7";
+            this.button7.TabIndex = 7;
+            this.button7.Text = "Previa";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button6
             // 
+            this.button6.Enabled = false;
             this.button6.Location = new System.Drawing.Point(4, 208);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(95, 35);
-            this.button6.TabIndex = 12;
+            this.button6.TabIndex = 6;
             this.button6.Text = "Roles";
             this.button6.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
+            this.button2.Enabled = false;
             this.button2.Location = new System.Drawing.Point(4, 44);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(95, 35);
-            this.button2.TabIndex = 8;
+            this.button2.TabIndex = 2;
             this.button2.Text = "Espacios";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
+            this.button3.Enabled = false;
             this.button3.Location = new System.Drawing.Point(4, 85);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(95, 35);
-            this.button3.TabIndex = 9;
+            this.button3.TabIndex = 3;
             this.button3.Text = "Edficios";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
+            this.button4.Enabled = false;
             this.button4.Location = new System.Drawing.Point(4, 126);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(95, 35);
-            this.button4.TabIndex = 10;
+            this.button4.TabIndex = 4;
             this.button4.Text = "Insidencias";
             this.button4.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
+            this.button5.Enabled = false;
             this.button5.Location = new System.Drawing.Point(4, 167);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(95, 35);
-            this.button5.TabIndex = 11;
+            this.button5.TabIndex = 5;
             this.button5.Text = "Enseres";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::WinApp.Properties.Resources.Logo_Meso_BN_300x282;
-            this.pictureBox1.Location = new System.Drawing.Point(132, 101);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(302, 295);
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
             // 
             // comboBox1
             // 
@@ -161,6 +160,15 @@ namespace WinApp.FD
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(201, 30);
             this.comboBox1.TabIndex = 9;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WinApp.Properties.Resources.Logo_Meso_BN_300x282;
+            this.pictureBox1.Location = new System.Drawing.Point(132, 101);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(302, 295);
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
             // 
             // Menu
             // 
