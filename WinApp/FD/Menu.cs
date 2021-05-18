@@ -41,6 +41,8 @@ namespace WinApp.FD
             comboBox1.ValueMember = "ID_Rol";
             comboBox1.DisplayMember = "Nombre_Rol";
 
+            comboBox1.
+
             string rol;
 
             switch(rol)
