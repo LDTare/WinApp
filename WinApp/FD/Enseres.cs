@@ -65,9 +65,68 @@ namespace WinApp.FD
             comboBox1.ValueMember = "ID_Espacio";
             comboBox1.DisplayMember = "ID_Espacio";
 
+            comboBox5.DataSource = enseresDB;
+            comboBox5.ValueMember = "ID_Espacio";
+            comboBox5.DisplayMember = "ID_Espacio";
+
             var espacios = from txt in enseres.Enseres where txt.Estado == 1 select txt;
 
             dataGridView1.DataSource = espacios;
+
+            var enseresERD = from tab in enseres.Enseres where tab.Estado == 1 select tab;
+
+            comboBox3.DataSource = enseresERD;
+            comboBox3.ValueMember = "ID_Enser";
+            comboBox3.DisplayMember = "ID_Enser";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var id = comboBox3.SelectedValue;
+            string espacio = comboBox5.SelectedValue.ToString();
+            string Tipo = comboBox4.Text;
+
+            DialogResult resul = MessageBox.Show("¿Desea modificar este registro?", "Información", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resul == DialogResult.Yes)
+            {
+                try
+                {
+                    enseres.Actualizar_Enser(Convert.ToString(id),textBox2.Text,Tipo,1,espacio);
+
+                    textBox2.Clear();
+                    textBox2.Focus();
+
+                    var enseresDB = from tab in enseres.Enseres where tab.Estado == 1 select tab;
+
+                    comboBox3.DataSource = enseresDB;
+                    comboBox3.ValueMember = "ID_Enser";
+                    comboBox3.DisplayMember = "ID_Enser";
+
+
+                    var enseresDBA = from tab in enseres.EspacioTB where tab.Estado == 1 select tab;
+
+                    comboBox5.DataSource = enseresDBA;
+                    comboBox5.ValueMember = "ID_Espacio";
+                    comboBox5.DisplayMember = "ID_Espacio";
+
+                    MessageBox.Show("Datos modificados correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message);
+                }
+            }
+
+            var ListaDatos = from txt in enseres.Enseres where txt.Estado == 1 select txt;
+
+            dataGridView1.DataSource = ListaDatos;
         }
     }
 }

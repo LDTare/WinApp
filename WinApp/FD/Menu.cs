@@ -63,6 +63,32 @@ namespace WinApp.FD
                         button7.Enabled = true;
                         break;
                     }
+                case 3:
+                    {
+                        button4.Enabled = true;
+                        button5.Enabled = true;
+                        button7.Enabled = true;
+                        break;
+                    }
+                case 4:
+                    {
+                        button2.Enabled = true;
+                        button3.Enabled = true;
+                        button4.Enabled = true;
+                        button5.Enabled = true;
+                        button7.Enabled = true;
+                        break;
+                    }
+                case 5:
+                    {
+                        button1.Enabled = true;
+                        button2.Enabled = true;
+                        button3.Enabled = true;
+                        button4.Enabled = true;
+                        button5.Enabled = true;
+                        button7.Enabled = true;
+                        break;
+                    }
 
                 default:
                     {
@@ -74,7 +100,6 @@ namespace WinApp.FD
         private void button5_Click(object sender, EventArgs e)
         {
             FD.Enseres inventario = new Enseres();
-            this.Hide();
             inventario.ShowDialog();
 
         }
