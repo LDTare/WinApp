@@ -60,5 +60,20 @@ namespace WinApp.FD
             var enseres = from TDRED in Report.Enseres where TDRED.ID_Espacio == idEdificio select TDRED;
             dataGridView2.DataSource = enseres;
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var Ed_ID = textBox1.Text;
+                string idEdificio = Convert.ToString(Ed_ID);
+                var enseres = from TDRED in Report.Enseres where TDRED.ID_Enser == idEdificio where TDRED.Estado == 1 select TDRED;
+                dataGridView2.DataSource = enseres;
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
     }
 }
