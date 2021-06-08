@@ -79,7 +79,7 @@ namespace WinApp.FD
         {
             Form1 Inicio = new Form1();
             Inicio.Show();
-            this.Close();
+            Close();
         }
     }
 }

@@ -22,7 +22,6 @@ namespace WinApp.FD
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int i;
             string espacio = comboBox1.SelectedValue.ToString();
             string Tipo = comboBox2.Text;
 
@@ -31,9 +30,8 @@ namespace WinApp.FD
                 var count = from rango in enseres.Enseres select rango;
                 var cantidad = count.Count();
 
-                i = cantidad + 1;
 
-                enseres.Insertar_Enser(i.ToString(), textBox1.Text, Tipo,espacio);
+                enseres.Insertar_Enser(textBox3.Text, textBox1.Text, Tipo,espacio);
 
                 textBox1.Clear();
                 textBox1.Focus();
@@ -78,11 +76,15 @@ namespace WinApp.FD
             comboBox3.DataSource = enseresERD;
             comboBox3.ValueMember = "ID_Enser";
             comboBox3.DisplayMember = "ID_Enser";
+
+            comboBox6.DataSource = enseresERD;
+            comboBox6.ValueMember = "ID_Enser";
+            comboBox6.DisplayMember = "ID_Enser";
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -115,6 +117,10 @@ namespace WinApp.FD
                     comboBox5.ValueMember = "ID_Espacio";
                     comboBox5.DisplayMember = "ID_Espacio";
 
+                    var ListaDatos = from txt in enseres.Enseres where txt.Estado == 1 select txt;
+
+                    dataGridView1.DataSource = ListaDatos;
+
                     MessageBox.Show("Datos modificados correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
@@ -123,10 +129,47 @@ namespace WinApp.FD
                     MessageBox.Show(err.Message);
                 }
             }
+        }
 
-            var ListaDatos = from txt in enseres.Enseres where txt.Estado == 1 select txt;
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var id = comboBox3.SelectedValue;
+            DialogResult resul = MessageBox.Show("¿Desea Eliminar    este registro?", "Información", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            dataGridView1.DataSource = ListaDatos;
+            if (resul == DialogResult.Yes)
+            {
+                try
+                {
+                    enseres.Eliminar_Enser(Convert.ToString(id), 0);
+
+                    var enseresERD = from tab in enseres.Enseres where tab.Estado == 1 select tab;
+
+                    comboBox3.DataSource = enseresERD;
+                    comboBox3.ValueMember = "ID_Enser";
+                    comboBox3.DisplayMember = "ID_Enser";
+
+                    comboBox6.DataSource = enseresERD;
+                    comboBox6.ValueMember = "ID_Enser";
+                    comboBox6.DisplayMember = "ID_Enser";
+
+                    var ListaDatos = from txt in enseres.Enseres where txt.Estado == 1 select txt;
+
+                    dataGridView1.DataSource = ListaDatos;
+
+                    MessageBox.Show("Enser eliminado correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message);
+                }
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Reportes frm = new Reportes();
+            frm.ShowDialog();
+            Close();
         }
     }
 }

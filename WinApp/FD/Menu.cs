@@ -108,7 +108,7 @@ namespace WinApp.FD
         {
             Form1 inicio = new Form1();
             inicio.Show();
-            this.Close();
+            Close();
         }
 
         private void button7_Click(object sender, EventArgs e)
